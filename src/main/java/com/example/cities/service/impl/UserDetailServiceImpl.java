@@ -41,7 +41,12 @@ public class UserDetailServiceImpl implements UserDetailsService {
     }
 
 
-    public void initUsers() throws IOException {
+    public User findUserByUserName(String username) {
+        return userRepository.findByEmail(username).get();
+    }
+
+
+    private void initUsers() throws IOException {
         User user = new User();
         user.setFirstName("user");
         user.setEmail("user@example.com");
@@ -76,4 +81,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
             initUsers();
         };
     }
+
+
 }
